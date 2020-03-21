@@ -1,0 +1,42 @@
+<%= render "errors" if @challenge.errors.any?%>
+
+<%= form_for(@challenge) do |f| %>
+  <div>
+    <p>Choose your Opponent</p>
+    <%= f.collection_select :challenger_id, User.order_by_username, :id, :username %>
+  </div>
+
+  <div>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+  </div>
+
+  <div>
+    <h5>What will you be wagering?</h5>
+    <p>Select from a list:</p>
+    <%= f.collection_select :wager_id, Wager.order_by_name, :id, :name, :include_blank => true %>
+    <p>Or make your own:</p>
+    <%= f.fields_for :wager do |w| %>
+      <%= w.label :name, "What would you like to wager?" %>
+      <%= w.text_field :name %>
+    <% end %>
+  </div>
+
+  <div>
+    <h5>What shall the loser's payment be?</h5>
+    <p>Select from a list:</p>
+    <%= f.collection_select :payment_id, Payment.order_by_name, :id, :name, :include_blank => true %>
+    <p>Or make your own:</p>
+    <%= f.fields_for :payment do |p| %>
+      <%= p.label :name, "Loser's payment?" %>
+      <%= p.text_field :name %>
+    <% end %>
+  </div>
+
+  <div>
+    <h5>When will wager take place?</h5>
+    <%= f.label :date %>
+    <%= f.datetime_field :date%>
+  </div>
+
+  <%= f.submit %>
+<% end %>

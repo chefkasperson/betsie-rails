@@ -1,0 +1,8 @@
+<h1>Log In!</h1>
+<% if @errors %>
+  <div class="field_with_errors">
+    <%= @errors %>
+  </div>
+<% end %>
+<br>
+<%= render 'login_form' %>

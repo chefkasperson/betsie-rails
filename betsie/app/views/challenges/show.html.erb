@@ -1,0 +1,19 @@
+
+<h2><%= @challenge.user.username + " vs " + @challenge.challenger.username %></h2>
+
+<% if @challenge.status == "completed" %>
+  <h4>Winner: <%= @challenge.winners_name %></h4>
+<% elsif @challenge.status == "accepted" %>
+  <%= form_for @challenge do |f| %>
+    <%= f.label :winner, "Who won?"%>
+    <%= f.collection_select :winner, @contestants, :id, :username %>
+    <%= f.submit %>
+  <% end %>
+<% elsif @challenge.status == "pending" && current_user.id == @challenge.challenger_id %>
+   <%= link_to "Accept Challenge", accept_challenge_path(@challenge) %>
+<% else %>
+  <h4>Status: <%= @challenge.status %></h4>
+<% end %>
+
+<h5>Wager: <%= @challenge.wager.name %> </h5>
+<h5>Loser has to: <%= @challenge.payment.name %> </h5>

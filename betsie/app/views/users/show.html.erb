@@ -1,0 +1,22 @@
+<h1>Welcome <%= @user.username %>!</h1>
+<br>
+<h5>Your current record is</h5>
+
+<h6><%= @user.user_record %></h6>
+
+<h5>Here are all the payments your opponents owe you</h5>
+<ul>
+  <% @user.user_wins.each do |c| %>
+    <li><h5><i>Payment:</i> "<%= c.payment.name %>"  -  <i>from: </i>"<%= c.losers_name %>"</h5></li>
+  <% end  %>  
+</ul>
+
+<h5>Here are all the payments for your losses</h5>
+<ul>
+  <% @user.user_losses.each do |c| %>
+    <li><h5><i>Payment: </i>"<%= c.payment.name %>"  -  <i>Owed to: </i>"<%= c.winners_name %>"</h5></li>
+  <% end  %>  
+</ul>
+
+<%= link_to 'Make a Challenge', new_user_challenge_path(@user) %>
+<%= link_to 'See all Challenges', user_challenges_path(@user) %>

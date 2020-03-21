@@ -1,0 +1,33 @@
+<% flash.each do |type, msg| %>
+  <br>
+  <div>
+    <%= msg %>
+  </div>
+<% end %>
+
+<% if @user %>
+  <h2><%= @user.username%>'s Challenges</h2>
+<% else %>
+  <h2>Challenges</h2>
+<% end %>
+
+<ul>
+<% @challenges.each do |c| %>
+  <div>
+  <li>
+    <%= link_to c.user.username + ' vs ' + c.challenger.username, challenge_path(c) %>
+    <p>Wager: <%= c.wager.name %></p>
+  </div></li> 
+  <br><br>
+<% end %>
+<% if @user %>
+  <% @challenges_from_others.each do |c| %>
+    <div>
+    <li>
+      <%= link_to c.user.username + ' vs ' + c.challenger.username, challenge_path(c) %>
+      <p>Wager: <%= c.wager.name %></p>
+    </div></li> 
+    <br><br>
+  <% end %>
+<% end %>
+</ul>

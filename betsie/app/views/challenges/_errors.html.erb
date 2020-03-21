@@ -1,0 +1,13 @@
+  <% if @challenge.errors.any? %>
+    <div class='field_with_errors'>
+      <h2>
+        <%= pluralize(@challenge.errors.count, "error") %> prohibited this challenge from being made:
+      </h2>
+
+      <ul>
+        <% @challenge.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %> 
