@@ -1,24 +1,26 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Welcome to Betsie
 
-Things you may want to cover:
+Betsie is an open source web application intended to allow users to both create and keep track of friendly wagers made to others. Users are able to create challenges and select or make wagers and payments for those challenges. The wagers and payments should be fun in nature and be non-monetarial. 
 
-* Ruby version
+## tech
 
-* System dependencies
+Betsie was created with: 
+Ruby on Rails   6.0.2.1
+Ruby            2.6.1
+sqlite3          1.4
+bcrypt          3.1.7
 
-* Configuration
+## extra
 
-* Database creation
+Betsie is still in development, feedback and suggestions are always welcome.
 
-* Database initialization
+Special thanks to Flatiron School and its instructors for teaching me and guiding me through the process of making this application.
 
-* How to run the test suite
+Thank you and enjoy
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+MIT License
 
-* ...
+Copyright (c) 2020 chefkasperson
