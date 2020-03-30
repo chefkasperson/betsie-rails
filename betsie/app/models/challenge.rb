@@ -73,4 +73,16 @@ class Challenge < ApplicationRecord
     end
   end 
 
+  def self.search(search)
+    if search
+      user = User.where("username like ?", "%#{search}%")
+      if user
+        self.where(user_id: user.ids) + self.where(challenger_id: user.ids)
+      else
+        Challenge.all
+      end
+    else
+      Challenge.all
+    end
+  end
 end

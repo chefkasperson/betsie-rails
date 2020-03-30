@@ -25,7 +25,7 @@ class ChallengesController < ApplicationController
       @challenges = @user.challenges
       @challenges_from_others = @user.challenges_from_others
     else
-      @challenges = Challenge.all
+      @challenges = Challenge.search(params[:search])
     end
   end
 
@@ -54,7 +54,7 @@ class ChallengesController < ApplicationController
   private
 
   def challenge_params
-    params.require(:challenge).permit(:date, :status, :winner, :user_id, :challenger_id, :wager_id, :payment_id, wager_attributes: [:name], payment_attributes: [:name])
+    params.require(:challenge).permit(:date, :status, :winner, :search, :user_id, :challenger_id, :wager_id, :payment_id, wager_attributes: [:name], payment_attributes: [:name])
   end
 
   def set_challenge

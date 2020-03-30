@@ -9,6 +9,12 @@
   <h2><%= @user.username%>'s Challenges</h2>
 <% else %>
   <h2>Challenges</h2>
+  <%= render "search" %>
+<% end %>
+
+<% if @challenges.count == 0 %>
+  <h6>No challenges found</h6>
+  <%= link_to 'All Challenges', challenges_path %>
 <% end %>
 
 <ul>
