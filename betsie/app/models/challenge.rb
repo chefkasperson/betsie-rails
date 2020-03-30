@@ -76,8 +76,10 @@ class Challenge < ApplicationRecord
   def self.search(search)
     if search
       user = User.where("username like ?", "%#{search}%")
-      if user
-        self.where(user_id: user.ids) + self.where(challenger_id: user.ids)
+      wager = Wager.where("name like ?", "%#{search}%")
+      payment = Payment.where("name like ?", "%#{search}%")
+      if user || wager || payment
+        self.where(user_id: user.ids) + self.where(challenger_id: user.ids) + self.where(wager_id: wager.ids) + self.where(payment_id: payment.ids)
       else
         Challenge.all
       end
