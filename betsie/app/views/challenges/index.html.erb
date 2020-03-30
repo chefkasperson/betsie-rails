@@ -23,6 +23,7 @@
   <li>
     <%= link_to c.user.username + ' vs ' + c.challenger.username, challenge_path(c) %>
     <p>Wager: <%= c.wager.name %></p>
+    <p>Payment: <%= c.payment.name %></p>
   </div></li> 
   <br><br>
 <% end %>
